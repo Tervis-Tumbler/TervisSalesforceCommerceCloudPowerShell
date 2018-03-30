@@ -10,4 +10,12 @@ Describe "TervisSalesforceCommerceCloudPowerShell" {
         $AccessToken = Get-SCCOAuthAccessToken -GrantType BusinessManagerUser
         $AccessToken | Should -Not -BeNullOrEmpty
     }
+    
+    It "Get-TervisSCCCustomerSearchResult" {
+        Get-TervisSCCCustomerSearchResult -email arussell2@tervis.com | Should -Not -BeNullOrEmpty
+    }
+
+    It "Get-TervisSCCCustomer" {
+        Get-TervisSCCCustomer -Email arussell2@tervis.com | Should -Not -BeNullOrEmpty
+    }
 }

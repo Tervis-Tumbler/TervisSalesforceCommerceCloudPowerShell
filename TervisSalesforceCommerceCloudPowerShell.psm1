@@ -78,6 +78,7 @@ function Get-TervisSCCCustomer {
     param (
         $Email
     )
-    $Result = Get-TervisSCCDataCustomerSearchResult -email $Email
-    Get-SCCCustomer -customer_id $Result.hits.data.customer_no
+    $SearchResult = Get-TervisSCCCustomerSearchResult -email $Email
+    $DataCustomer = Get-SCCDataCustomerListCustomer -customer_no $SearchResult.hits.data.customer_no -list_id Tervis
+    Get-SCCShopCustomer -customer_id $DataCustomer.customer_id -SiteName Tervis
 }
