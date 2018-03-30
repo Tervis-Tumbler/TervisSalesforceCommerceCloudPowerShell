@@ -51,3 +51,18 @@ function Set-TervisSCCAPIEnvironment {
 }
 
 Set-TervisSCCAPIEnvironment -EnvironmentName Development
+
+function Get-TervisSCCCustomerSearchResult {
+    param (
+        [String]$email
+    )
+    Get-SCCCustomerSearchResult @PSBoundParameters -customer_list_id Tervis
+}
+
+function Get-TervisSCCCustomer {
+    param (
+        $Email
+    )
+    $Result = Get-TervisSCCCustomerSearchResult -email $Email
+    Get-SCCCustomer -customer_id $Result.hits.data.customer_no
+}
