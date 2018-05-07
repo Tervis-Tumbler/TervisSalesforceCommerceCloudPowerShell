@@ -36,7 +36,7 @@ function Set-TervisSCCAPIClientCredential {
     Where-Object Name -EQ $EnvironmentName |
     Select-Object -ExpandProperty APIClientPasswordstateEntryID |
     % { 
-        Get-PasswordstateCredential -PasswordID $_ 
+        Get-PasswordstatePassword -AsCredential -ID $_ 
     }
 
     Set-SCCAPIClientCredential -Credential $Credential  
@@ -50,7 +50,7 @@ function Set-TervisSCCAPIBusinessManagerUserCredential {
     Where-Object Name -EQ $EnvironmentName |
     Select-Object -ExpandProperty BusinessManagerUserPasswordstateEntryID |
     % { 
-        Get-PasswordstateCredential -PasswordID $_ 
+        Get-PasswordstatePassword -AsCredential -ID $_ 
     }
 
     Set-SCCAPIBusinessManagerUserCredential -Credential $Credential 
